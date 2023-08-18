@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { HttpClientModule } from '@angular/common/http';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ConsultaNomesComponent } from './consulta-nomes/consulta-nomes.component';
@@ -11,6 +13,7 @@ import { ConsultaNomesComponent } from './consulta-nomes/consulta-nomes.componen
     ConsultaNomesComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule
   ],
