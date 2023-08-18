@@ -21,11 +21,17 @@ export class ConsultaNomesComponent {
     if (this.nome) {
       this.http.get<any[]>(`https://servicodados.ibge.gov.br/api/v2/censos/nomes/${this.nome}`)
         .subscribe(data => {
-          this.resultados = data[0].res.filter((item:any) => item.periodo === 'DECADA')
-            .map((item:any) => ({
-              decada: '${item.periodo_inicial} - ${item.periodo_final}',
+          this.resultados = data[0].res.filter((item: any) => item.periodo === 'DECADA')
+            .map((item: any) => ({
+              decada: `${item.periodo_inicial} - ${item.periodo_final}`,
+              frequencia: item.frequencia
             }));
         });
     }
+  }
+
+  cancelar() {
+    this.nome = '';
+    this.resultados = [];
   }
 }
