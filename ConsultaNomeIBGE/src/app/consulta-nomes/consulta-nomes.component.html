@@ -7,7 +7,7 @@
         <input type="text" id="nome" [(ngModel)]="nome" name="nome" required>
         <div class="buttons">
             <button class="cancel-button" type="button" (click)="cancelar()">Cancelar</button>
-            <button class="search-button" type="submit" (click)="buscarNomes()">Buscar</button>
+            <button class="search-button" type="button" (click)="buscarNomes()">Buscar</button>
         </div>
     </div>
     <div class="results" *ngIf="resultados.length > 0">
