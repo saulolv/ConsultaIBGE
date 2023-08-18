@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
+import { Router } from '@angular/router';
 
 interface ResultadoDecada {
   decada: string;
@@ -15,7 +16,7 @@ export class ConsultaNomesComponent {
   nome: string = '';
   resultados: ResultadoDecada[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   buscarNomes() {
     console.log('Função buscarNomes() foi chamada.'); 
@@ -30,6 +31,7 @@ export class ConsultaNomesComponent {
             }));
             console.log('Resultados mapeados:', this.resultados);
         });
+        this.router.navigate(['/resultado', this.nome]);
     }
   }
 
