@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="header"> 
+        <h2>Busca Frequência por Nome</h2>
+    </div>
+    <div class="form">
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" [(ngModel)]="nome" name="nome" required>
+        <div class="buttons">
+            <button class="cancel-button" type="button">Cancelar</button>
+            <button class="search-button" type="submit" (click)="buscar()">Buscar</button>
+        </div>
+    </div>
+    <div class="results" *ngIf="resultados.length > 0">
+        <h3>Frequência por {{nome}}</h3>
+        <table>
+            <tr>
+                <th>Década</th>
+                <th>Frequência</th>
+            </tr>
+            <tr *ngFor="let resultado of resultados">
+                <td>{{resultado.decada}}</td>
+                <td>{{resultado.frequencia}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
