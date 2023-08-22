@@ -1,1 +1,27 @@
-<p>resultado-nomes works!</p>
+<div class="container">
+    <h2 class="title">
+        <a routerLink="" class="back-button">
+            <span class="back-arrow">←</span>
+        </a>
+        Frequência por {{ nomePesquisado }}
+    </h2>
+    <div class="table-container">
+        <table>
+            <tr>
+                <th class="table-header">#</th>
+                <th class="table-header">Decada</th>
+                <th class="table-header">Frequência</th>
+            </tr>
+            <tr *ngFor="let frequencia of frequenciasPorDecada; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ frequencia.decada }}</td>
+                <td>{{ frequencia.frequencia }}</td>
+            </tr>
+        </table>
+    </div>
+    <ng-template #semDados>
+        <div class="sem-dados">
+            <h3>Nenhum dado encontrado</h3>
+        </div>
+    </ng-template>
+</div>

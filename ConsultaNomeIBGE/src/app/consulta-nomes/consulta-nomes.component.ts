@@ -24,7 +24,7 @@ export class ConsultaNomesComponent {
       this.http.get<any[]>(`https://servicodados.ibge.gov.br/api/v2/censos/nomes/${this.nome}`)
         .subscribe(data => {
           console.log('Dados retornados da API:', data);
-          this.resultados = data[0].res.filter((item: any) => item.periodo === 'DECADA')
+          this.resultados = data[0].res.filter((item: any) => item.periodo === 'Classe')
             .map((item: any) => ({
               decada: `${item.periodo_inicial} - ${item.periodo_final}`,
               frequencia: item.frequencia
