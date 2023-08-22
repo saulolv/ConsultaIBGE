@@ -6,7 +6,7 @@
 
 /* Estilos do cabeçalho */
 .header {
-    background-color: #007bff;
+    background-color: #2b018d;
     color: #fff;
     text-align: center;
     padding: 15px 0;
@@ -15,7 +15,7 @@
 
 .back-button {
     display: inline-block;
-    background-color: #007bff;
+    background-color: #2b018d;
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -26,14 +26,15 @@
 }
 
 .back-arrow {
-    margin-right: 5px;
+    margin-right: 10px;
+    font-size: 30px;
 }
 
 /* Estilos do título */
 h2.title {
     text-align: left;
     margin-bottom: 10px;
-    background-color: blue;
+    background-color: #2b018d;
     color: white;
     padding: 10px;
     border-radius: 5px;
@@ -58,7 +59,7 @@ table {
 }
 
 th, td {
-    border: 1px solid #ddd;
+    border: none;
     padding: 12px;
     text-align: center;
     white-space: normal;
@@ -72,8 +73,14 @@ th, td {
     text-align: center;
 }
 
-/* Outros estilos específicos */
-.sub-header {
-    font-size: 24px;
-    margin-top: 20px;
+tr:nth-child(even) {
+    background-color: #f2f2f2; /* Cinza claro */
+}
+
+
+
+@media (max-width: 768px) {
+    .table-container {
+        width: 100%;
+    }
 }

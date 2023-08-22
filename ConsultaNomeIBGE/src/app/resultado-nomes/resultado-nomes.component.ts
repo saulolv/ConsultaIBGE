@@ -10,7 +10,8 @@ import { HttpClient } from '@angular/common/http';
 export class ResultadoNomesComponent implements OnInit {
   nomePesquisado: string = '';
   frequenciasPorDecada: any[] = [];
-  
+  totalFrequenciaFormatado: string = '';
+
   constructor(private route: ActivatedRoute, private http: HttpClient) { }
 
   ngOnInit() {
@@ -25,10 +26,26 @@ export class ResultadoNomesComponent implements OnInit {
       .subscribe(data => {
         console.log('Dados retornados da API:', data);
         this.frequenciasPorDecada = data[0].res.map((item: any) => ({
-          decada: `${item.periodo}`,
-          frequencia: item.frequencia
+          decada: this.formatarPeriodo(item.periodo),
+          frequencia: this.formatarNumeroComPontos(item.frequencia),
+          frequenciaNumerica: Number(item.frequencia)
         }));
         console.log('Resultados mapeados:', this.frequenciasPorDecada);
+
+        this.calcularTotal();
       });
+  }
+
+  calcularTotal() {
+    const totalFrequencia = this.frequenciasPorDecada.reduce((total, item) => total + item.frequenciaNumerica, 0);
+    this.totalFrequenciaFormatado = this.formatarNumeroComPontos(totalFrequencia);
+  }
+
+  formatarNumeroComPontos(valor: number): string {
+    return valor.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+  }
+
+  formatarPeriodo(periodo: string): string {
+    return periodo.replace(/,/g, ', ');
   }
 }

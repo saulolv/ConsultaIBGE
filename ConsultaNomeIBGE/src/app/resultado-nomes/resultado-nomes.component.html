@@ -8,18 +8,25 @@
         </h2>
         <table>
             <tr>
-                <th class="table-header">#</th>
-                <th class="table-header">Década</th>
-                <th class="table-header">Frequência</th>
+                <th>#</th>
+                <th>Década</th>
+                <th>Frequência</th>
             </tr>
             <tr *ngFor="let frequencia of frequenciasPorDecada; let i = index">
                 <td>{{ i + 1 }}</td>
                 <td>{{ frequencia.decada }}</td>
                 <td>{{ frequencia.frequencia }}</td>
             </tr>
+            <tr>
+                <td><strong>Total</strong></td>
+                <td></td>
+                <td>{{ totalFrequenciaFormatado }}</td>
+            </tr>
         </table>
         <div *ngIf="frequenciasPorDecada.length === 0" class="sem-dados">
             <h3>Nenhum dado encontrado</h3>
         </div>
+    
+
     </div>
 </div>
