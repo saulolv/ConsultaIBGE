@@ -51,7 +51,6 @@ console.log('Função buscarNomes() foi chamada.');
   }
 
   cancelar() {
-  cancelar() {
     console.log('Função cancelar() foi chamada.');
     this.nome = '';
     this.resultados = [];
