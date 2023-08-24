@@ -21,14 +21,14 @@ export class ConsultaNomesComponent {
   buscarNomes() {
     console.log('Função buscarNomes() foi chamada.'); 
     if (this.nome) {
-      this.http.get<any[]>(`https://servicodados.ibge.gov.br/api/v2/censos/nomes/${this.nome}`)
+      this.http.get<any[]>(`https://servicodados.ibge.gov.br/api/v2/censos/nomes/${this.nomePesquisado}`)
         .subscribe(data => {
           console.log('Dados retornados da API:', data);
-          this.resultados = data[0].res.filter((item: any) => item.periodo === 'periodo')
-            .map((item: any) => ({
-              decada: `${item.periodo_inicial} - ${item.periodo_final}`,
-              frequencia: item.frequencia
-            }));
+          this.frequenciasPorDecada = data[0].res.map((item: any) => ({
+            decada: this.formatarPeriodo(item.periodo),
+            frequencia: this.formatarNumeroComPontos(item.frequencia),
+            frequenciaNumerica: Number(item.frequencia)
+          }));
             console.log('Resultados mapeados:', this.resultados);
         });
         this.router.navigate(['/resultado', this.nome]);
